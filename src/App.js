@@ -86,6 +86,7 @@ function App() {
       alert("Please take the test in full-screen mode.");
       return;
     }
+    setViolationCount(0);
   };
 
   return (
