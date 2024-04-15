@@ -11,10 +11,10 @@ function App() {
 
   useEffect(() => {
     // Retrieve stored violation count
-    const storedViolationCount = localStorage.getItem("violationCount");
-    if (storedViolationCount) {
-      setViolationCount(parseInt(storedViolationCount));
-    }
+    // const storedViolationCount = localStorage.getItem("violationCount");
+    // if (storedViolationCount) {
+    //   setViolationCount(parseInt(storedViolationCount));
+    // }
     // Retrieve fullscreen state
     const storedFullScreen = localStorage.getItem("isFullScreen");
     setIsFullScreen(storedFullScreen === "true");
@@ -42,12 +42,6 @@ function App() {
     setIsFullScreen(document.fullscreenElement !== null);
   };
 
-  // const handleVisibilityChange = () => {
-  //   if (document.visibilityState === "hidden") {
-  //     setViolationCount(violationCount + 1);
-  //   }
-  // };
-
   const handleVisibilityChange = () => {
     if (!document.hidden) {
       // setViolationCount(violationCount + 1);
@@ -55,31 +49,12 @@ function App() {
     }
   };
 
-  // useEffect(() => {
-  //   const handleWindowFocus = () => {
-  //     // setViolationCount(violationCount + 1);
-  //     setViolationCount((prevCount) => prevCount);
-  //   };
-
-  //   window.addEventListener("focus", handleWindowFocus);
-
-  //   return () => {
-  //     window.removeEventListener("focus", handleWindowFocus);
-  //   };
-  // }, []);
-
   const requestFullScreen = () => {
     const appContainer = document.documentElement;
     if (appContainer.requestFullscreen) {
       appContainer.requestFullscreen();
     }
   };
-
-  // const exitFullScreen = () => {
-  //   if (document.exitFullscreen) {
-  //     document.exitFullscreen();
-  //   }
-  // };
 
   const startQuiz = () => {
     if (!isFullScreen) {
@@ -102,13 +77,10 @@ function App() {
           <button onClick={requestFullScreen}>Enter Full Screen</button>
         </div>
       )}
-      {/* Welcome Page */}
       <Start startQuiz={startQuiz} />
 
-      {/* Quiz Page */}
       <Quiz />
 
-      {/* Result Page */}
       <Result />
     </DataProvider>
   );
